@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SongSearchers helps you find songs from TikTok videos instantly. Paste a video link and discover the music behind it." />
+  <meta name="keywords" content="find TikTok songs, identify TikTok music, song search, song identifier, music from videos" />
+  <meta name="author" content="SongSearchers">
+  <meta property="og:title" content="SongSearchers - Instantly Identify TikTok Songs" />
+  <meta property="og:description" content="Paste a TikTok video link and discover the music behind it. Fast, accurate, and free." />
+  <meta property="og:image" content="preview.png" />
+  <meta property="og:url" content="https://songsearchers.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>SongSearchers - Instantly Identify TikTok Songs</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  
+ <script src="https://analytics.ahrefs.com/analytics.js" data-key="bNzbQmXI9/ATxo165GBsPw" async></script>
+<!-- Link to External Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>SongSearchers</h1>
+    <p class="intro">Identify songs from TikTok videos instantly. Paste the link, click search, and get the song info. Simple, fast, free.</p>
+  </header>
+
+  <div class="container">
+    <form id="linkForm">
+      <input type="url" id="videoLink" placeholder="Paste TikTok video link here..." required />
+      <button type="submit">Identify Song</button>
+    </form>
+    <div class="result" id="result">🎵 Song info will appear here</div>
+    <div id="cooldown"></div>
+  </div>
+
+
+
+  <div class="seo-text">
+    <h2>🎧 Discover the Music Behind the Videos</h2>
+    <p>
+      Got a TikTok song stuck in your head? Whether it’s a catchy beat from a dance trend or a chill vibe in a viral video, SongSearchers makes it easy to find. Just paste the TikTok link, and we’ll instantly give you the song title and artist.
+
+
+    </p>
+    <p>
+      No sign-ups, no hassle. Just fast, accurate song identification for music lovers, creators, and anyone curious about the tunes they hear.
+    </p>
+  </div>
+
+
+
+  <div class="seo-text">
+    <h2>🚀 Why SongSearchers?</h2>
+    <ul style="list-style: none; padding: 0;">
+      <li>✅ TikTok-focused music ID</li>
+      <li>✅ No sign-ups or spam</li>
+      <li>✅ Free, accurate, and fast</li>
+    </ul>
+    <p>Paste a TikTok link above and discover your next favorite track.</p>
+  </div>
+
+  <footer>
+    © <span id="year"></span> SongSearchers.com. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const cooldownKey = 'lastUseTimestamp';
+    const cooldownTime = 3600 * 1000;
+
+    function updateCountdown() {
+      const lastUse = localStorage.getItem(cooldownKey);
+      if (!lastUse) return;
+      const timeLeft = cooldownTime - (Date.now() - parseInt(lastUse));
+      const countdown = document.getElementById('cooldown');
+      if (timeLeft > 0) {
+        const minutes = Math.floor(timeLeft / 60000);
+        const seconds = Math.floor((timeLeft % 60000) / 1000);
+        countdown.textContent = `⏳ Try again in ${minutes}m ${seconds}s`;
+        setTimeout(updateCountdown, 1000);
+      } else {
+        countdown.textContent = '';
+      }
+    }
+
+    document.getElementById('linkForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const resultDiv = document.getElementById('result');
+      const link = document.getElementById('videoLink').value.trim();
+
+      const lastUse = localStorage.getItem(cooldownKey);
+      if (lastUse && Date.now() - parseInt(lastUse) < cooldownTime) {
+        resultDiv.textContent = '🚫 Limit reached. Try again later.';
+        updateCountdown();
+        return;
+      }
+
+      resultDiv.textContent = '⏳ Identifying...';
+
+      try {
+        const res = await fetch('identify.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ link })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          resultDiv.innerHTML = `✅ <strong>${data.author}</strong> - ${data.title}`;
+          localStorage.setItem(cooldownKey, Date.now());
+          updateCountdown();
+        } else {
+          resultDiv.textContent = `❌ Error: ${data.error}`;
+        }
+      } catch {
+        resultDiv.textContent = '⚠️ Could not identify the song.';
+      }
+    });
+
+    updateCountdown();
+  </script>
+</body>
+</html>
