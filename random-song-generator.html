@@ -3,89 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SongSearchers</title>
-    <link rel="stylesheet" href="style.css"> <!-- Your external CSS file -->
+    <title>Random Song/Artist Generator</title>
+    <!-- Link to External Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
-        <h1>SongSearchers - Discover Your Next Hit</h1>
-        <p class="intro">Find your favorite songs and artists with ease. Click the buttons below to listen to them on Amazon Music!</p>
+        <h1>Discover New Music!</h1>
+        <p class="intro">Get a random song and artist just like TikTok trends! Click the button below to discover new music.</p>
     </header>
 
     <div class="container">
-        <div class="song-item">
-            <h2>Blinding Lights</h2>
-            <p>Artist: The Weeknd</p>
-            <a href="https://amzn.to/3G6Qhpl" class="button">Listen on Amazon Music</a>
-        </div>
+        <button onclick="generateRandomSong()">Give Me A Random Song!</button>
 
-        <div class="song-item">
-            <h2>Levitating</h2>
-            <p>Artist: Dua Lipa</p>
-            <a href="https://amzn.to/3G6Qhpl" class="button">Listen on Amazon Music</a>
-        </div>
-
-        <div class="song-item">
-            <h2>Shape of You</h2>
-            <p>Artist: Ed Sheeran</p>
-            <a href="https://amzn.to/3G6Qhpl" class="button">Listen on Amazon Music</a>
-        </div>
-
-        <div class="song-item">
-            <h2>Save Your Tears</h2>
-            <p>Artist: The Weeknd</p>
-            <a href="https://amzn.to/3G6Qhpl" class="button">Listen on Amazon Music</a>
-        </div>
-
-        <div class="song-item">
-            <h2>Good 4 U</h2>
-            <p>Artist: Olivia Rodrigo</p>
-            <a href="https://amzn.to/3G6Qhpl" class="button">Listen on Amazon Music</a>
-        </div>
-
-        <div class="song-item">
-            <h2>Watermelon Sugar</h2>
-            <p>Artist: Harry Styles</p>
-            <a href="https://amzn.to/3G6Qhpl" class="button">Listen on Amazon Music</a>
-        </div>
-
-        <div class="song-item">
-            <h2>Bad Guy</h2>
-            <p>Artist: Billie Eilish</p>
-            <a href="https://amzn.to/3G6Qhpl" class="button">Listen on Amazon Music</a>
-        </div>
-
-        <div class="song-item">
-            <h2>Montero (Call Me By Your Name)</h2>
-            <p>Artist: Lil Nas X</p>
-            <a href="https://amzn.to/3G6Qhpl" class="button">Listen on Amazon Music</a>
-        </div>
-
-        <div class="song-item">
-            <h2>Shivers</h2>
-            <p>Artist: Ed Sheeran</p>
-            <a href="https://amzn.to/3G6Qhpl" class="button">Listen on Amazon Music</a>
-        </div>
-
-        <div class="song-item">
-            <h2>Industry Baby</h2>
-            <p>Artist: Lil Nas X, Jack Harlow</p>
-            <a href="https://amzn.to/3G6Qhpl" class="button">Listen on Amazon Music</a>
-        </div>
-
-        <div class="song-item">
-            <h2>Peaches</h2>
-            <p>Artist: Justin Bieber</p>
-            <a href="https://amzn.to/3G6Qhpl" class="button">Listen on Amazon Music</a>
-        </div>
+        <div id="songResult" class="result"></div>
+        <div id="songDetails" class="result"></div>
     </div>
 
     <footer>
-        <p>SongSearchers - Powered by Music Lovers</p>
-        <p class="affiliate-disclaimer">
-            <strong>Affiliate Disclaimer:</strong> As an Amazon Associate, we earn from qualifying purchases. This means that when you click on some of the links and make a purchase, we may earn a small commission at no extra cost to you.
-        </p>
+        <p>Powered by SongSearchers | <a href="https://www.songsearchers.com" style="color: #ff2a68;">Home</a></p>
     </footer>
+
+    <script>
+        // Sample array of songs, representing TikTok trends
+        const songs = [
+            { title: 'Savage Love', artist: 'Jawsh 685 & Jason Derulo', link: 'https://www.tiktok.com/music/Savage-Love-6844421223021423617' },
+            { title: 'Good 4 U', artist: 'Olivia Rodrigo', link: 'https://www.tiktok.com/music/Good-4-U-6947819120587241729' },
+            { title: 'Levitating', artist: 'Dua Lipa', link: 'https://www.tiktok.com/music/Levitating-6883732352314552065' },
+            { title: 'Blinding Lights', artist: 'The Weeknd', link: 'https://www.tiktok.com/music/Blinding-Lights-6780297467840706049' },
+            { title: 'Stay', artist: 'The Kid LAROI & Justin Bieber', link: 'https://www.tiktok.com/music/Stay-6947812343489658881' },
+            { title: 'Shape of You', artist: 'Ed Sheeran', link: 'https://www.tiktok.com/music/Shape-of-You-6784094562646598657' },
+            { title: 'Industry Baby', artist: 'Lil Nas X & Jack Harlow', link: 'https://www.tiktok.com/music/Industry-Baby-6940905623155471361' },
+            { title: 'Watermelon Sugar', artist: 'Harry Styles', link: 'https://www.tiktok.com/music/Watermelon-Sugar-6841818963075240449' },
+            { title: 'Peaches', artist: 'Justin Bieber', link: 'https://www.tiktok.com/music/Peaches-6871254205077867009' },
+            { title: 'Astronaut In The Ocean', artist: 'Masked Wolf', link: 'https://www.tiktok.com/music/Astronaut-In-The-Ocean-6885036504204212225' },
+        ];
+
+        // Function to generate a random song/artist from the list
+        function generateRandomSong() {
+            const randomIndex = Math.floor(Math.random() * songs.length);
+            const randomSong = songs[randomIndex];
+            const songTitle = randomSong.title;
+            const songArtist = randomSong.artist;
+            const songLink = randomSong.link;
+
+            // Displaying the result
+            document.getElementById('songResult').textContent = `${songTitle} by ${songArtist}`;
+            document.getElementById('songDetails').innerHTML = `Check out the song on TikTok: <a href="${songLink}" style="color: #ff2a68;" target="_blank">Listen Now</a>`;
+        }
+    </script>
+
 </body>
 </html>
+
 
