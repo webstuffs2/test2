@@ -1,114 +1,84 @@
-<style>
+ <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #000000, #1a1a1a);
-      
       margin: 0;
-      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, #1f1f1f, #3a3a3a);
+      color: #f5f5f5;
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
     }
-
     header {
       text-align: center;
-      padding: 40px 20px 20px;
+      margin-bottom: 3rem;
     }
-
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-      color: #ff2a68;
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #ffffff;
     }
-
-    p.intro {
-      max-width: 700px;
-      font-size: 1.2em;
-      margin: 0 auto 30px;
-      color: #ccc;
+    header p {
+      font-size: 1rem;
+      color: #bbbbbb;
     }
-
-    .container {
-      background: #1f1f1f;
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 500px;
-      width: 90%;
-      box-shadow: 0 0 15px #ff2a68;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    input[type="url"] {
+    .ad-slot {
       width: 100%;
-      max-width: 400px;
-      padding: 12px;
+      max-width: 600px;
+      margin: 1rem auto;
+      min-height: 90px;
+      background: #2a2a2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-radius: 8px;
-      border: none;
-      margin-bottom: 15px;
-      font-size: 1em;
-      box-sizing: border-box;
+      font-size: 0.9rem;
+      color: #666;
     }
-
-    button {
-      background-color: #ff2a68;
+    .tool-box {
+      background: #2b2b2b;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+    }
+    .tool-box input {
+      width: 90%;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    .tool-box button {
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 0.5rem;
+      background: #ff0050;
       color: white;
+      font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
-      border: none;
-      border-radius: 8px;
-      padding: 12px 20px;
-      font-size: 1rem;
-      width: 100%;
-      max-width: 400px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
     }
-
-    button:hover {
-      background-color: #d21f56;
-      transform: scale(1.05);
-    }
-
     .result {
-      margin-top: 20px;
-      font-size: 1.2em;
+      margin-top: 2rem;
+      color: #ffffff;
+      background: #3b3b3b;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      display: none;
     }
-
-    #cooldown {
-      margin-top: 10px;
-      color: #aaa;
-      font-size: 0.9em;
-    }
-
-    .seo-text {
-      max-width: 700px;
-      margin: 40px auto;
-      text-align: center;
-      color: #bbb;
-      line-height: 1.6;
-      font-size: 1em;
-      padding: 0 20px;
-    }
-
     footer {
+      margin-top: auto;
       text-align: center;
-      margin: 40px 0 20px;
-      font-size: 0.9em;
-      color: #666;
+      font-size: 0.9rem;
+      color: #777;
+      padding: 2rem 0 1rem;
     }
 
-    .ad-placeholder {
-      background: #2c2c2c;
-      border: 1px dashed #444;
-      height: 90px;
-      margin: 70px auto;
-      width: 90%;
-      max-width: 728px;
-      text-align: center;
-      line-height: 90px;
-      color: #666;
-      font-size: 0.9em;
-    }
 
 .tools-grid {
   display: grid;
