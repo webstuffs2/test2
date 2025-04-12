@@ -1,111 +1,73 @@
- <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, #1f1f1f, #3a3a3a);
-      color: #f5f5f5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 2rem;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #ffffff;
-    }
-    header p {
-      font-size: 1rem;
-      color: #bbbbbb;
-    }
-    .ad-slot {
-      width: 100%;
-      max-width: 600px;
-      margin: 1rem auto;
-      min-height: 90px;
-      background: #2a2a2a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      color: #666;
-    }
-    .tool-box {
-      background: #2b2b2b;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      width: 100%;
-      max-width: 600px;
-      text-align: center;
-    }
-    .tool-box input {
-      width: 90%;
-      padding: 0.8rem;
-      border: none;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-    .tool-box button {
-      padding: 0.8rem 2rem;
-      border: none;
-      border-radius: 0.5rem;
-      background: #ff0050;
-      color: white;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .result {
-      margin-top: 2rem;
-      color: #ffffff;
-      background: #3b3b3b;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      display: none;
-    }
-    footer {
-      margin-top: auto;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #777;
-      padding: 2rem 0 1rem;
-    }
+body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
 
+  h1 {
+    font-size: 2.5em;
+    color: #fff;
+    margin-bottom: 0.3em;
+  }
 
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-  padding: 30px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+  .highlight {
+    background: linear-gradient(90deg, #ff2a68, #00f0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+  }
 
-.tool-card {
-  background: #1f1f1f;
-  border-radius: 20px;
-  padding: 30px;
-  text-decoration: none;
-  color: white;
-  box-shadow: 0 0 10px #ff2a68;
-  transition: transform 0.3s ease;
-}
+  .card {
+    background: #1f1f1f;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 30px rgba(255, 42, 104, 0.2);
+    max-width: 400px;
+    width: 90%;
+  }
 
-.tool-card:hover {
-  transform: scale(1.05);
-  background: #2b2b2b;
-}
+  input, button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    margin-top: 12px;
+    font-size: 1em;
+  }
 
-.tool-card h2 {
-  margin-bottom: 10px;
-  color: #ff2a68;
-}
-  </style>
+  input {
+    background: #333;
+    color: #fff;
+  }
+
+  button {
+    background: linear-gradient(90deg, #ff2a68, #00f0ff);
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  button:hover {
+    transform: scale(1.03);
+  }
+
+  .result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #0ff;
+  }
+
+  footer {
+    margin-top: 50px;
+    font-size: 0.8em;
+    color: #555;
